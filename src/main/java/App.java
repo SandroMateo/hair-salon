@@ -25,6 +25,22 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    get("/stylist/:stylistId/client/:id", (request, response) -> {
+      Map<String, Object> model = new HashMap<>();
+      Client client = Client.find(Integer.parseInt(request.params(":id")));
+      model.put("client", client);
+      model.put("template", "templates/client.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/stylist/:id/edit", (request, response) -> {
+      Map<String, Object> model = new HashMap<>();
+      Stylist stylist = Stylist.find(Integer.parseInt(request.params(":id")));
+      model.put("stylist", stylist);
+      model.put("template", "templates/stylist-edit.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
     post("/stylists/new", (request, response) -> {
       Map<String, Object> model = new HashMap<>();
       String name = request.queryParams("name");
@@ -45,6 +61,26 @@ public class App {
       int stylistId = Integer.parseInt(request.queryParams("stylistId"));
       Client newClient = new Client(name, preferences, age, stylistId);
       newClient.save();
+      model.put("stylists", Stylist.all());
+      model.put("template", "templates/index.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/stylist/:id/edited", (request, response) -> {
+      Map<String, Object> model = new HashMap<>();
+      Stylist stylist = Stylist.find(Integer.parseInt(request.params(":id")));
+      model.put("stylist", stylist);
+      stylist.updateName(request.queryParams("name"));
+      stylist.updateAge(Integer.parseInt(request.queryParams("age")));
+      stylist.updateBackground(request.queryParams("background"));
+      model.put("template", "templates/stylist.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/stylist/:id/deleted", (request, response) -> {
+      Map<String, Object> model = new HashMap<>();
+      Stylist stylist = Stylist.find(Integer.parseInt(request.params(":id")));
+      stylist.delete();
       model.put("stylists", Stylist.all());
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);

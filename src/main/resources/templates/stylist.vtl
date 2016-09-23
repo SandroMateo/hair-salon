@@ -3,10 +3,13 @@
 #if($stylist.getClients().size() > 0)
   <ul>
     #foreach($client in $stylist.getClients())
-      <li><a href="/stylist/$stylist.getId()/clients/$client.getId()">$client.getName()</a></li>
+      <li><a href="/stylist/$stylist.getId()/client/$client.getId()">$client.getName()</a></li>
     #end
   </ul>
 #end
 
 <h2>Background</h2>
-<p>$stylist.getBackground()</p>
+<p>$stylist.getBackground() <a href="/stylist/$stylist.getId()/edit">edit</a></p>
+
+
+<h4><a href="/">Home</a></h4>

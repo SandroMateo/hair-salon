@@ -1,0 +1,17 @@
+<h1>Make Changes to $stylist.getName()</h1>
+
+<div class="form-group">
+  <form action="/stylist/$stylist.getId()/edited" method="post">
+    <label for="name">Edit Name:</label>
+    <textarea name="name" rows="1" cols="40" class="form-control">$stylist.getName()</textarea>
+    <label for="age">Edit Age:</label>
+    <textarea name="age" rows="1" cols="40" class="form-control">$stylist.getAge()</textarea>
+    <label for="background">Edit Background:</label>
+    <textarea name="background" rows="4" cols="40" class="form-control">$stylist.getBackground()</textarea>
+    <button type="submit" class="btn btn-success">Update</button>
+  </form>
+
+  <form action="/stylist/$stylist.getId()/deleted" method="post">
+    <button type="submit" class="btn btn-danger">Delete This Stylist</button>
+  </form>
+</div>
