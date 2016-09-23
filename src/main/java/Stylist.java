@@ -48,11 +48,11 @@ public class Stylist {
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO stylists (name, background, age) VALUES (:name, :background, :age)";
+      String sql = "INSERT INTO stylists (name, age, background) VALUES (:name, :age, :background)";
       this.id = (int) con.createQuery(sql, true)
         .addParameter("name", this.name)
-        .addParameter("background", this.background)
         .addParameter("age", this.age)
+        .addParameter("background", this.background)
         .executeUpdate()
         .getKey();
     }
