@@ -37,19 +37,19 @@ public class Client {
   }
 
   public static List<Client> all() {
-    String sql = "SELECT id, name, preferences, age, stylistId FROM clients";
     try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT id, name, preferences, age, stylistId FROM clients";
       return con.createQuery(sql).executeAndFetch(Client.class);
     }
   }
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO clients (name, preferences, age, stylistId) VALUES (:name, :preferences, :age, :stylistId)";
+      String sql = "INSERT INTO clients (name, age, preferences, stylistid) VALUES (:name, :age, :preferences, :stylistId)";
       this.id = (int) con.createQuery(sql, true)
         .addParameter("name", this.name)
-        .addParameter("preferences", this.preferences)
         .addParameter("age", this.age)
+        .addParameter("preferences", this.preferences)
         .addParameter("stylistId", this.stylistId)
         .executeUpdate()
         .getKey();
@@ -59,10 +59,10 @@ public class Client {
   public static Client find(int id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM clients where id=:id";
-      Client media = con.createQuery(sql)
+      Client client = con.createQuery(sql)
       .addParameter("id", id)
       .executeAndFetchFirst(Client.class);
-    return media;
+    return client;
     }
   }
 

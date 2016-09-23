@@ -29,6 +29,16 @@ public class ClientTest {
   }
 
   @Test
+  public void getPreference_returnsPreference_String() {
+    assertEquals("men's cut", firstClient.getPreferences());
+  }
+
+  @Test
+  public void getAge_returnsAge_int() {
+    assertEquals(23, firstClient.getAge());
+  }
+
+  @Test
   public void getId_returnsId_true() {
     firstClient.save();
     assertTrue(firstClient.getId() > 0);
@@ -68,15 +78,15 @@ public class ClientTest {
     assertEquals(firstClient.getId(), savedClient.getId());
   }
 
-  // @Test
-  // public void save_savesStylistIdIntoDB_true() {
-  //   Stylist myStylist = new Stylist("Chase", "37", "15 years experience");
-  //   myStylist.save();
-  //   Client myClient = new Client("Satchel", "men's cut with face shave", 24, myStylist.getId());
-  //   myClient.save();
-  //   Client savedClient = Client.find(myClient.getId());
-  //   assertEquals(savedClient.getStylistId(), myStylist.getId());
-  // }
+  @Test
+  public void save_savesStylistIdIntoDB_true() {
+    Stylist myStylist = new Stylist("Chase", "15 years experience", 37);
+    myStylist.save();
+    Client myClient = new Client("Satchel", "men's cut with face shave", 24, myStylist.getId());
+    myClient.save();
+    Client savedClient = Client.find(myClient.getId());
+    assertEquals(savedClient.getStylistId(), myStylist.getId());
+  }
 
   @Test
   public void updateName_updatesClientName_true() {
