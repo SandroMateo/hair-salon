@@ -1,0 +1,17 @@
+<h1>Make Changes to $client.getName()</h1>
+
+<div class="form-group">
+  <form action="/stylist/$client.getStylistId()/client/$client.getId()/edited" method="post">
+    <label for="name">Edit Name:</label>
+    <textarea name="name" rows="1" cols="40" class="form-control">$client.getName()</textarea>
+    <label for="age">Edit Age:</label>
+    <textarea name="age" rows="1" cols="40" class="form-control">$client.getAge()</textarea>
+    <label for="preferences">Edit Preferences:</label>
+    <textarea name="preferences" rows="4" cols="40" class="form-control">$client.getPreferences()</textarea>
+    <button type="submit" class="btn btn-success">Update</button>
+  </form>
+
+  <form action="/stylist/$client.getStylistId()/client/$client.getId()/deleted" method="post">
+    <button type="submit" class="btn btn-danger">Delete This Client</button>
+  </form>
+</div>
