@@ -39,8 +39,9 @@ edits a client | Preferences: "full shave" | name: "Sandro", Age: 23, Preference
 
 * In PSQL:
   CREATE DATABASE hair_salon;
-  CREATE TABLE stylists (id serial PRIMARY KEY, name varchar, age int, background varchar);
-  CREATE TABLE clients (id serial PRIMARY KEY, name varchar, age int, preferences varchar, stylistId int);
+
+* In Terminal:
+  psql media < media.sql
 
 * Type gradle run in terminal and go to localhost:4567 in browser
 
@@ -55,6 +56,8 @@ edits a client | Preferences: "full shave" | name: "Sandro", Age: 23, Preference
 * Spark
 
 * Postgres
+
+* SQL
 
 * VelocityTemplateEngine
 
