@@ -71,6 +71,15 @@ public class StylistTest {
   }
 
   @Test
+  public void search_returnStylistListWithSearchedString_true() {
+    firstStylist.save();
+    Stylist myStylist = new Stylist("Charles", "10 years experience", 30);
+    myStylist.save();
+    assertTrue(Stylist.search("Ch").contains(firstStylist));
+    assertTrue(Stylist.search("Ch").contains(myStylist));
+  }
+
+  @Test
   public void equals_returnsTrueIfNamesAreTheSame() {
     Stylist myStylist = new Stylist("Chase", "15 years experience", 37);
     assertTrue(firstStylist.equals(myStylist));

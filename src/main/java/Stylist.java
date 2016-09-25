@@ -68,6 +68,15 @@ public class Stylist {
     }
   }
 
+  public static List<Stylist> search(String search) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM stylists WHERE name LIKE :search";
+      return con.createQuery(sql)
+      .addParameter("search", (search + "%"))
+      .executeAndFetch(Stylist.class);
+    }
+  }
+
   public void updateName(String name) {
     this.name = name;
     try(Connection con = DB.sql2o.open()) {

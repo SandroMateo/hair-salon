@@ -66,6 +66,15 @@ public class Client {
     }
   }
 
+  public static List<Client> search(String search) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM clients WHERE name LIKE :search";
+      return con.createQuery(sql)
+      .addParameter("search", (search + "%"))
+      .executeAndFetch(Client.class);
+    }
+  }
+
   public void updateName(String name) {
     this.name = name;
     try(Connection con = DB.sql2o.open()) {

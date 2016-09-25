@@ -60,6 +60,15 @@ public class ClientTest {
   }
 
   @Test
+  public void search_returnClientListWithSearchedString_true() {
+    firstClient.save();
+    Client myClient = new Client("Satchel", "full shave", 24, 1);
+    myClient.save();
+    assertTrue(Client.search("Sa").contains(firstClient));
+    assertTrue(Client.search("Sa").contains(myClient));
+  }
+
+  @Test
   public void equals_returnsTrueIfNamesAreTheSame() {
     Client myClient = new Client("Sandro", "men's cut", 23, 1);
     assertTrue(firstClient.equals(myClient));
