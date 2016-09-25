@@ -3,10 +3,24 @@
   <head>
     <title>Hair Salon</title>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="/app.css" type="text/css">
   </head>
   <body>
-    <div class="container">
-          #parse( $template )
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <img id="icon" class="navbar-brand img-responsive" src="images/icon.png" alt="hair salon icon">
+        <div class="pull-left">
+          <h3>Hairy People Salon</h3>
+        </div>
+        <div class="pull-right">
+          <form action="/search" method="post">
+            
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="container" id="main">
+      #parse( $template )
     </div>
   </body>
 </html>
