@@ -1,0 +1,19 @@
+<h1>Here's What We Found</h1>
+
+#if($stylists.size() > 0)
+  <ul>
+    #foreach($stylist in $stylists)
+      <li><a href="/stylist/$stylist.getId()/clients">$stylist.getName()</a></li>
+    #end
+  </ul>
+#elseif($clients.size() > 0)
+  <ul>
+    #foreach($client in $clients)
+      <li><a href="/stylist/$client.getStylistId()/client/client.getId()">$client.getName()</a></li>
+    #end
+  </ul>
+#else
+  <h2>No Search Results</h2>
+#end
+
+<h4><a href="/">Home</a></h4>

@@ -115,5 +115,16 @@ public class App {
       model.put("template", "templates/stylist.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    post("/search", (request, response) -> {
+      Map<String, Object> model = new HashMap<>();
+      if(request.queryParams("type").equals("Stylist")) {
+        model.put("stylists", Stylist.search(request.queryParams("search")));
+      } else {
+        model.put("clients", Client.search(request.queryParams("search")));
+      }
+      model.put("template", "templates/search.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
   }
 }
