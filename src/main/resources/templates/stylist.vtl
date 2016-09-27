@@ -1,6 +1,7 @@
 <h1>$stylist.getName(), $stylist.getAge()</h1>
 
 #if($stylist.getClients().size() > 0)
+  <h3>Clients:</h3>
   <ul>
     #foreach($client in $stylist.getClients())
       <li><a href="/stylist/$stylist.getId()/client/$client.getId()">$client.getName()</a></li>
@@ -9,7 +10,7 @@
 #end
 
 <h2>Background</h2>
-<p>$stylist.getBackground() <a href="/stylist/$stylist.getId()/edit">edit</a></p>
+<p>$stylist.getBackground() <a class="edit" href="/stylist/$stylist.getId()/edit">edit</a></p>
 
 
 <h4><a href="/">Home</a></h4>

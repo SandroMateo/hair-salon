@@ -9,34 +9,41 @@
   </ul>
 #end
 
-<h2>New Stylist:</h2>
-<form action="/stylists/new" method="post">
-  <div class="form-group">
-    <label for="name">Name:</label>
-    <input type="text" name="name" placeholder="Name" class="form-control">
-    <label for="background">Background:</label>
-    <input type="text" name="background" placeholder="Background" class="form-control">
-    <label for="age">Age</label>
-    <input type="number" name="age" placeholder="Age" class="form-control">
+<div class="row">
+  <div  id="stylist-form" class="col-sm-6">
+    <h2>New Stylist:</h2>
+    <form action="/stylists/new" method="post">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" name="name" placeholder="Name" class="form-control">
+        <label for="background">Background:</label>
+        <input type="text" name="background" placeholder="Background" class="form-control">
+        <label for="age">Age</label>
+        <input type="number" name="age" placeholder="Age" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-success">Add!</button>
+    </form>
   </div>
-  <button type="submit" class="btn btn-success">Add!</button>
-</form>
-
-<h2>New Client:</h2>
-<form action="/clients/new" method="post">
-  <label for="stylistId">Select a Stylist</label>
-  <select name='stylistId' type='text'>
-    #foreach($stylist in $stylists)
-      <option value="$stylist.getId()">$stylist.getName()</option>
-    #end
-  </select>
-  <div class="form-group">
-    <label for="name">Name: </label>
-    <input type="text" name="name" placeholder="Name" class="form-control">
-    <label for="preferences">Preferences: </label>
-    <input type="text" name="preferences" placeholder="Preferences" class="form-control">
-    <label for="age">Age: </label>
-    <input type="number" name="age" placeholder="Age" class="form-control">
-  </div>
-  <button type="submit" class="btn btn-success">Add!</button>
-</form>
+  #if($stylists.size() > 0)
+    <div class="col-sm-6">
+      <h2>New Client:</h2>
+      <form action="/clients/new" method="post">
+        <label for="stylistId">Select a Stylist</label>
+        <select name='stylistId' type='text'>
+          #foreach($stylist in $stylists)
+            <option value="$stylist.getId()">$stylist.getName()</option>
+          #end
+        </select>
+        <div class="form-group">
+          <label for="name">Name: </label>
+          <input type="text" name="name" placeholder="Name" class="form-control">
+          <label for="preferences">Preferences: </label>
+          <input type="text" name="preferences" placeholder="Preferences" class="form-control">
+          <label for="age">Age: </label>
+          <input type="number" name="age" placeholder="Age" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-success">Add!</button>
+      </form>
+    </div>
+  #end
+</div>

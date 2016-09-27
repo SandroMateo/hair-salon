@@ -1,7 +1,29 @@
+body {
+  background-image: url(images/background.jpg);
+}
+
+h1 {
+  text-shadow: 2px 2px black;
+}
+
 #icon {
   padding: 5px;
 }
 
 #main {
+  color: white;
   padding-top: 5%;
+}
+
+a {
+  color: white;
+  text-shadow: 0.5px 0.5px blue;
+}
+
+.edit {
+  color: crimson;
+}
+
+#stylist-form {
+  margin-top: 1.6em;
 }
