@@ -9,7 +9,7 @@
 #elseif($clients.size() > 0)
   <ul>
     #foreach($client in $clients)
-      <li><a href="/stylist/$client.getStylistId()/client/client.getId()">$client.getName()</a></li>
+      <li><a href="/stylist/$client.getStylistId()/client/$client.getId()">$client.getName()</a></li>
     #end
   </ul>
 #else
